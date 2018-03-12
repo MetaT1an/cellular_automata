@@ -3,8 +3,8 @@ package model;
 public class Cell {
 
     private int[][] cells;
-    public static  int N = 30;
-    public static double birthRate = 0.2;
+    public static  int N = 40;
+    private static double birthRate = 0.2;
 
     private Cell(){
         cells = new int[N][N];

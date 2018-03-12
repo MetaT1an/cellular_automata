@@ -8,7 +8,7 @@ import model.Cell;
 public class CellsPane {
     private Canvas canvas;
     private GraphicsContext gc;
-    private static final int N = Cell.N;
+    private static int N = Cell.N;
     public static final int CELL_SIZE = 18;
     public static final int CELL_PADDING = 1;
     private static final int SCALE = (N + 2) * CELL_SIZE + CELL_PADDING * (N - 1);
