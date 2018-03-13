@@ -1,5 +1,6 @@
 package control;
 
+import javafx.stage.Stage;
 import model.Cell;
 import view.CellsPane;
 import view.ConsolePane;
@@ -11,7 +12,7 @@ public class ConsoleControl {
     private static CellsPane cellsPane= CellsPane.getCellsPane();
     private static ConsolePane consolePane = ConsolePane.getConsolePane();
 
-    public static void addSetEvent(){
+    public static void addSetEvent(Stage stage){
         consolePane.getButtons(0).setOnAction(event -> {
 
             //update model part
@@ -21,6 +22,9 @@ public class ConsoleControl {
             //update view part
             cellsPane.resetCanvas();
             PaneControl.draw();
+
+            //update the stage size
+            resetStage(stage);
         });
     }
 
@@ -39,5 +43,13 @@ public class ConsoleControl {
 
     private static double getBirthRate(){
         return consolePane.getBirthRateBox().getValue();
+    }
+
+    private static void resetStage(Stage stage){
+        double canvasSize = cellsPane.getCanvas().getWidth();
+        double width = canvasSize + consolePane.getGridPane().getWidth() + 20;
+        double height = canvasSize + 30;
+        stage.setWidth(width);
+        stage.setHeight(height);
     }
 }
