@@ -1,6 +1,7 @@
 package view;
 
-import control.PaneControl;
+import control.AnimationControl;
+import control.ConsoleControl;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,14 +17,13 @@ public class MainFrame extends Application{
 
         borderPane.setCenter(cellsPane.getCanvas());
         borderPane.setRight(consolePane.getGridPane());
-
         BorderPane.setMargin(borderPane.getRight(), new Insets(0, 20, 0, 0));
-        PaneControl.animation();
+
+        AnimationControl.animation();
+        ConsoleControl.addSetEvent();
 
         Scene scene = new Scene(borderPane);
-
         stage.setScene(scene);
-        //stage.setResizable(false);
         stage.setTitle("cellular automata");
         stage.show();
     }

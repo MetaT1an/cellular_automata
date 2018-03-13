@@ -1,9 +1,6 @@
 package control;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 import model.Cell;
 import view.CellsPane;
 
@@ -25,9 +22,5 @@ public class PaneControl {
                 cellsPane.getGc().fillRect(x, y, CellsPane.CELL_SIZE, CellsPane.CELL_SIZE);
             }
     }
-    public static void animation(){
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(300), event -> {draw(); cell.scan(); }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
+
 }

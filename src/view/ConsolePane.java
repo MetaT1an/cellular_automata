@@ -51,6 +51,18 @@ public class ConsolePane {
         return gridPane;
     }
 
+    public ComboBox<String> getSizeBox() {
+        return sizeBox;
+    }
+
+    public ComboBox<Double> getBirthRateBox() {
+        return birthRateBox;
+    }
+
+    public Button getButtons(int i) {
+        return buttons[i];
+    }
+
     private void setModule(){
         labels[0].setText("Size:");
         labels[0].setFont(Font.font(16));
@@ -100,6 +112,5 @@ public class ConsolePane {
         for(i=0; i<3; ++i){
             GridPane.setMargin(buttons[i], new Insets(10, 0, 0, 15));
         }
-
     }
 }

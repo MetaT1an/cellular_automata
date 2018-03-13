@@ -3,7 +3,7 @@ package model;
 public class Cell {
 
     private int[][] cells;
-    public static  int N = 40;
+    public static  int N = 30;
     private static double birthRate = 0.2;
 
     private Cell(){
@@ -17,6 +17,19 @@ public class Cell {
         if(cell == null)
             cell = new Cell();
         return cell;
+    }
+    /*
+    after the new size and new birthRate was set,
+    this method will be called to redefine the cells
+     */
+    public void resetCells(){
+        cells = new int[N][N];
+        init();
+    }
+
+    public static void resetArgs(int n, double rate){
+        Cell.N = n;
+        Cell.birthRate = rate;
     }
 
     private void init(){
