@@ -14,6 +14,8 @@ public class PaneControl {
             for(int j=0; j<Cell.N; ++j){
                 if(cell.getStatus(i,j) == 1)
                     cellsPane.getGc().setFill(Color.GRAY);
+                else if(cell.getStatus(i, j) == 2)
+                    cellsPane.getGc().setFill((Color.rgb(36, 36, 36)));
                 else
                     cellsPane.getGc().setFill(Color.WHITE);
 

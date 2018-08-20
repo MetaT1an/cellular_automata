@@ -3,6 +3,7 @@ package model;
 public class Cell {
 
     private int[][] cells;
+    private int[][] oldCells;
     public static  int N = 30;
     private static double birthRate = 0.2;
 
@@ -19,7 +20,7 @@ public class Cell {
         return cell;
     }
     /*
-    after the new size and new birthRate was set,
+    after the new size or new birthRate was set,
     this method will be called to redefine the cells
      */
     public void resetCells(){
@@ -38,9 +39,14 @@ public class Cell {
                 if(Math.random() < birthRate)
                     setAlive(i, j);
             }
+        oldCells = cells;
     }
 
     private void setAlive(int i, int j){
+        cells[i][j] = 2;
+    }
+
+    private void setOld(int i, int j){
         cells[i][j] = 1;
     }
 
@@ -52,14 +58,14 @@ public class Cell {
         int sum = 0;
         for(int m=i-1; m<=N-1 && m>=0 && m<=i+1; ++m)
             for(int n=j-1; n<=N-1 && n>=0 && n<=j+1; ++n){
-                if(!(m == i && n == j) && getStatus(m, n) == 1)
+                if(!(m == i && n == j) && getStatus(m, n) > 0)
                     sum++;
             }
         return sum;
     }
 
     public int getStatus(int i, int j){
-        return cells[i][j];
+        return oldCells[i][j];
     }
 
     public void scan(){
@@ -67,8 +73,11 @@ public class Cell {
             for(int j=0; j<N; ++j){
                 if(getStatus(i, j) == 0 && getAliveNeighbor(i, j) == 3)
                     setAlive(i, j);
-                if(getStatus(i, j) == 1 && (getAliveNeighbor(i, j) < 2 || getAliveNeighbor(i, j) > 3))
+                else if(getStatus(i, j) > 0 && (getAliveNeighbor(i, j) < 2 || getAliveNeighbor(i, j) > 3))
                     setDead(i, j);
+                else if(getStatus(i, j) > 0)
+                    setOld(i, j);
             }
+        oldCells = cells;
     }
 }
