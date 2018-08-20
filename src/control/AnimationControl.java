@@ -21,7 +21,6 @@ public class AnimationControl {
             cell.scan();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
 
         consolePane.getButtons(1).setOnAction(event -> timeline.pause());
         consolePane.getButtons(2).setOnAction(event -> timeline.play());
