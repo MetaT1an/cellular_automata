@@ -2,7 +2,10 @@
 A cellular automata consists of a regular grid of cells, each one of them will die or rebirth under different conditions. 
 
 ## Dead or reborn condition
-If the current cell is **alive**, and the amount of cells `around` it is **less than 2** or **more than 3**, it will die.  
+If the current cell is **alive**
+- the amount of cells `around` it is **less than 2** or **more than 3**, it will die. 
+- the amount of cells `around` it lies between 2 and 3, it will shift to another living state.  
+
 If the current cell is **dead**, and the amount of cells `around` it is **exactly 3**, it will rebirth.
 
 ## Some explanations
@@ -11,7 +14,7 @@ If the current cell is **dead**, and the amount of cells `around` it is **exactl
 
 - the `Birth Rate` means that at the beginning of the test, all the cells are dead, and there is a certain propability for each cell to rebirth.
 
-- all the cells alive will be colored **gray**, otherwise **white**.
+- all the cells alive will be colored **gray** or **black**(only for the newly born), otherwise **white**.
 
 ## Screen shots
 - original(Size:30x30, Birth rate: 0.2)
