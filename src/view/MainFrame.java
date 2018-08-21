@@ -2,6 +2,7 @@ package view;
 
 import control.AnimationControl;
 import control.ConsoleControl;
+import control.PaneControl;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -18,12 +19,13 @@ public class MainFrame extends Application{
 
         //layout
         borderPane.setCenter(cellsPane.getCanvas());
-        borderPane.setRight(consolePane.getGridPane());
+        borderPane.setRight(consolePane.getvBox());
         BorderPane.setMargin(borderPane.getRight(), new Insets(0, 20, 0, 0));
 
         //event
         AnimationControl.animation();
         ConsoleControl.addSetEvent(stage);
+        PaneControl.addCellsEvent();
 
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);

@@ -8,8 +8,7 @@ public class Cell {
     private static double birthRate = 0.2;
 
     private Cell(){
-        cells = new int[N][N];
-        init();
+        resetCells();
     }
 
     private static Cell cell = null;
@@ -25,6 +24,7 @@ public class Cell {
      */
     public void resetCells(){
         cells = new int[N][N];
+        oldCells = new int[N][N];
         init();
     }
 
@@ -39,7 +39,7 @@ public class Cell {
                 if(Math.random() < birthRate)
                     setAlive(i, j);
             }
-        oldCells = cells;
+        copyCells();
     }
 
     private void setAlive(int i, int j){
@@ -64,8 +64,18 @@ public class Cell {
         return sum;
     }
 
+    private void copyCells(){
+        for(int i = 0; i < N; ++i) {
+            System.arraycopy(cells[i], 0, oldCells[i], 0, N);
+        }
+    }
+
     public int getStatus(int i, int j){
         return oldCells[i][j];
+    }
+
+    public void setStatus(int i, int j, int status){
+        cells[i][j] = status;
     }
 
     public void scan(){
@@ -78,6 +88,6 @@ public class Cell {
                 else if(getStatus(i, j) > 0)
                     setOld(i, j);
             }
-        oldCells = cells;
+        copyCells();
     }
 }

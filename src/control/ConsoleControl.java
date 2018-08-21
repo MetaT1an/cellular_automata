@@ -36,8 +36,10 @@ public class ConsoleControl {
             value = 20;
         else if("30 × 30".equals(item))
             value = 30;
-        else
+        else if("40 × 40".equals(item))
             value = 40;
+        else
+            value = 50;
         return value;
     }
 
@@ -47,7 +49,7 @@ public class ConsoleControl {
 
     private static void resetStage(Stage stage){
         double canvasSize = cellsPane.getCanvas().getWidth();
-        double width = canvasSize + consolePane.getGridPane().getWidth() + 20;
+        double width = canvasSize + consolePane.getvBox().getWidth() + 20;
         double height = canvasSize + 30;
         stage.setWidth(width);
         stage.setHeight(height);
