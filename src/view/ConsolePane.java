@@ -14,33 +14,39 @@ import java.util.ArrayList;
 
 public class ConsolePane {
     private VBox vBox;
-    private HBox hBox;
+    private HBox[] hBox;
     private GridPane gridPane;
     private Label[] labels;
     private ComboBox<String> sizeBox;
     private ComboBox<Double> birthRateBox;
     private ComboBox<String> modeBox;
+    private ComboBox<String> instanceBox;
     private ArrayList<String> sizeItems;
     private ArrayList<Double> birthRateItems;
     private ArrayList<String> modeItems;
+    private ArrayList<String> instanceItems;
     private Button[] buttons;
 
     private ConsolePane(){
         vBox = new VBox(20);
-        hBox = new HBox(20);
+        hBox = new HBox[2];
+        hBox[0] = new HBox(20);
+        hBox[1] = new HBox(45);
         gridPane = new GridPane();
 
-        labels = new Label[3];
-        for(int i=0; i<3; ++i)
+        labels = new Label[4];
+        for(int i=0; i<4; ++i)
             labels[i] = new Label();
 
         sizeBox = new ComboBox<>();
         birthRateBox = new ComboBox<>();
         modeBox = new ComboBox<>();
+        instanceBox = new ComboBox<>();
 
         sizeItems = new ArrayList<>();
         birthRateItems = new ArrayList<>();
         modeItems = new ArrayList<>();
+        instanceItems = new ArrayList<>();
 
         buttons = new Button[3];
         for(int i=0; i<3; ++i)
@@ -72,6 +78,10 @@ public class ConsolePane {
 
     public ComboBox<String> getModeBox() { return modeBox; }
 
+    public ComboBox<String> getInstanceBox() {
+        return instanceBox;
+    }
+
     public Button getButtons(int i) {
         return buttons[i];
     }
@@ -83,10 +93,13 @@ public class ConsolePane {
         labels[1].setFont(Font.font(16));
         labels[2].setText("Game mode:");
         labels[2].setFont(Font.font(15));
+        labels[3].setText("Instance:");
+        labels[3].setFont(Font.font(16));
 
         sizeBox.setPrefSize(100, 20);
         birthRateBox.setPrefSize(70, 20);
         modeBox.setPrefSize(100, 20);
+        instanceBox.setPrefSize(100, 20);
 
         sizeItems.add("20 × 20");
         sizeItems.add("30 × 30");
@@ -101,6 +114,10 @@ public class ConsolePane {
         modeItems.add("mode 2");
         modeItems.add("mode 3");
         modeItems.add("mode 4");
+
+        instanceItems.add("Glider");
+        instanceItems.add("Acorn");
+        instanceItems.add("Gun");
 
         buttons[0].setText("Set");
         buttons[1].setText("Pause");
@@ -120,6 +137,7 @@ public class ConsolePane {
         gridPane.add(sizeBox, 1, 0);
         gridPane.add(birthRateBox, 1, 1);
 
+
         for(i=0; i<3; ++i)
             gridPane.add(buttons[i], 0, i+2, 2, 1);
 
@@ -129,6 +147,9 @@ public class ConsolePane {
         birthRateBox.setValue(birthRateItems.get(1));
         modeBox.getItems().addAll(modeItems);
         modeBox.setValue(modeItems.get(0));
+        instanceBox.getItems().addAll(instanceItems);
+        instanceBox.setValue(instanceItems.get(0));
+        instanceBox.setDisable(true);
 
         gridPane.setVgap(20);
         GridPane.setMargin(birthRateBox, new Insets(0, 0, 0, 62));
@@ -138,8 +159,9 @@ public class ConsolePane {
             GridPane.setMargin(buttons[i], new Insets(10, 0, 0, 30));
         }
 
-        hBox.getChildren().addAll(labels[2], modeBox);
-        vBox.getChildren().addAll(hBox, gridPane);
+        hBox[0].getChildren().addAll(labels[2], modeBox);
+        hBox[1].getChildren().addAll(labels[3], instanceBox);
+        vBox.getChildren().addAll(hBox[0], hBox[1], gridPane);
         vBox.setAlignment(Pos.CENTER_LEFT);
     }
 }

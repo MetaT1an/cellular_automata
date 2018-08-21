@@ -13,11 +13,23 @@ public class ConsoleControl {
     private static ConsolePane consolePane = ConsolePane.getConsolePane();
 
     public static void addControlEvent(Stage stage){
+
+        // Set Button was clicked
         consolePane.getButtons(0).setOnAction(event -> {
+            String selection = consolePane.getModeBox().getValue();
+            String instance = consolePane.getInstanceBox().getValue();
 
             //update model part
             Cell.resetArgs(getSize(), getBirthRate());
-            cell.resetCells();
+
+            if("mode 1".equals(selection)){
+                cell.resetCells();
+            }else if("mode 2".equals(selection)){
+                cell.empty();
+            } else if("mode 3".equals(selection)){
+                cell.generate(instance);
+                PaneControl.draw();
+            }
 
             //update view part
             cellsPane.resetCanvas();
@@ -33,7 +45,13 @@ public class ConsoleControl {
                 PaneControl.delCellsEvent();
             }else if("mode 2".equals(selection)){
                 PaneControl.addCellsEvent();
+            }else if("mode 3".equals(selection)){
+                setSize(3);
+                PaneControl.delCellsEvent();
+            }else{
+                
             }
+            loadBtns(selection);
         });
     }
 
@@ -52,6 +70,11 @@ public class ConsoleControl {
         return value;
     }
 
+    private static void setSize(int i){
+        String select = consolePane.getSizeBox().getItems().get(i);
+        consolePane.getSizeBox().setValue(select);
+    }
+
     private static double getBirthRate(){
         return consolePane.getBirthRateBox().getValue();
     }
@@ -62,5 +85,21 @@ public class ConsoleControl {
         double height = canvasSize + 30;
         stage.setWidth(width);
         stage.setHeight(height);
+    }
+
+    private static void loadBtns(String mode){
+        if("mode 1".equals(mode)){
+            consolePane.getBirthRateBox().setDisable(false);
+            consolePane.getSizeBox().setDisable(false);
+            consolePane.getInstanceBox().setDisable(true);
+        } else if("mode 2".equals(mode)){
+            consolePane.getBirthRateBox().setDisable(true);
+            consolePane.getSizeBox().setDisable(false);
+            consolePane.getInstanceBox().setDisable(true);
+        } else if("mode 3".equals(mode)){
+            consolePane.getBirthRateBox().setDisable(true);
+            consolePane.getSizeBox().setDisable(true);
+            consolePane.getInstanceBox().setDisable(false);
+        }
     }
 }
