@@ -74,19 +74,25 @@ public class Cell {
         return oldCells[i][j];
     }
 
-    public void setStatus(int i, int j, int status){
-        cells[i][j] = status;
+    public void setClickStatus(int i, int j, int status){
+        oldCells[i][j] = status;
     }
 
     public void scan(){
         for(int i=0; i<N; ++i)
-            for(int j=0; j<N; ++j){
-                if(getStatus(i, j) == 0 && getAliveNeighbor(i, j) == 3)
-                    setAlive(i, j);
-                else if(getStatus(i, j) > 0 && (getAliveNeighbor(i, j) < 2 || getAliveNeighbor(i, j) > 3))
-                    setDead(i, j);
-                else if(getStatus(i, j) > 0)
-                    setOld(i, j);
+            for(int j=0; j<N; ++j) {
+
+                if (getStatus(i, j) == 0) {
+                    if (getAliveNeighbor(i, j) == 3)
+                        setAlive(i, j);
+                    else
+                        setDead(i, j);
+                } else {    // alive
+                    if (getAliveNeighbor(i, j) < 2 || getAliveNeighbor(i, j) > 3)
+                        setDead(i, j);
+                    else
+                        setOld(i, j);
+                }
             }
         copyCells();
     }

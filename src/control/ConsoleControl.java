@@ -12,7 +12,7 @@ public class ConsoleControl {
     private static CellsPane cellsPane= CellsPane.getCellsPane();
     private static ConsolePane consolePane = ConsolePane.getConsolePane();
 
-    public static void addSetEvent(Stage stage){
+    public static void addControlEvent(Stage stage){
         consolePane.getButtons(0).setOnAction(event -> {
 
             //update model part
@@ -25,6 +25,15 @@ public class ConsoleControl {
 
             //update the stage size
             resetStage(stage);
+        });
+
+        consolePane.getModeBox().setOnAction(event -> {
+            String selection = consolePane.getModeBox().getValue();
+            if("mode 1".equals(selection)){
+                PaneControl.delCellsEvent();
+            }else if("mode 2".equals(selection)){
+                PaneControl.addCellsEvent();
+            }
         });
     }
 

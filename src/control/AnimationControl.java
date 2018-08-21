@@ -17,8 +17,8 @@ public class AnimationControl {
     public static void animation(){
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(300), event ->
         {
-            PaneControl.draw();
             cell.scan();
+            PaneControl.draw();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
 

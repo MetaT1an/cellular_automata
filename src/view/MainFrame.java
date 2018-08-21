@@ -24,8 +24,7 @@ public class MainFrame extends Application{
 
         //event
         AnimationControl.animation();
-        ConsoleControl.addSetEvent(stage);
-        PaneControl.addCellsEvent();
+        ConsoleControl.addControlEvent(stage);
 
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);

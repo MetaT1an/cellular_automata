@@ -28,18 +28,22 @@ public class PaneControl {
             //add operations after the mouse clicking on the board
             int x = (int)(event.getX() / (CellsPane.CELL_SIZE + CellsPane.CELL_PADDING)) - 1;
             int y = (int)(event.getY() / (CellsPane.CELL_SIZE + CellsPane.CELL_PADDING)) - 1;
-            if(x < 0 || y < 0)
+            if(x < 0 || y < 0 || x >= Cell.N || y >= Cell.N)
                 return;
             if(cell.getStatus(x, y) > 0){
-                cell.setStatus(x, y, 0);
+                cell.setClickStatus(x, y, 0);
                 cellsPane.getGc().setFill(Color.WHITE);
             }
             else{
-                cell.setStatus(x, y, 2);
+                cell.setClickStatus(x, y, 2);
                 cellsPane.getGc().setFill(Color.rgb(36, 36, 36));
             }
             drawOneCell(x, y);
         });
+    }
+
+    public static void delCellsEvent(){
+        cellsPane.getCanvas().setOnMouseClicked(event -> {});
     }
 
     private static void drawOneCell(int i, int j){
