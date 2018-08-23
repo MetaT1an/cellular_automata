@@ -113,7 +113,6 @@ public class ConsolePane {
         modeItems.add("mode 1");
         modeItems.add("mode 2");
         modeItems.add("mode 3");
-        modeItems.add("mode 4");
 
         instanceItems.add("Glider");
         instanceItems.add("Acorn");
