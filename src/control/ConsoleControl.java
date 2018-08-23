@@ -45,11 +45,9 @@ public class ConsoleControl {
                 PaneControl.delCellsEvent();
             }else if("mode 2".equals(selection)){
                 PaneControl.addCellsEvent();
-            }else if("mode 3".equals(selection)){
+            }else if("mode 3".equals(selection)) {
                 setSize(3);
                 PaneControl.delCellsEvent();
-            }else{
-                
             }
             loadBtns(selection);
         });
