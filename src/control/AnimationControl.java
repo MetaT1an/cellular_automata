@@ -15,7 +15,7 @@ public class AnimationControl {
     private static ConsolePane consolePane = ConsolePane.getConsolePane();
 
     public static void animation(){
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(300), event ->
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(240), event ->
         {
             cell.scan();
             PaneControl.draw();

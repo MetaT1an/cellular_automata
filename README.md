@@ -16,12 +16,15 @@ If the current cell is **dead**, and the amount of cells `around` it is **exactl
 
 - all the cells alive will be colored **gray** or **black**(only for the newly born), otherwise **white**.
 
+## Game mode
+![](http://imglf3.nosdn0.126.net/img/ZHkxOW9FR3pkWXRleXhYOGtsN20xbWhCVWQ3SG5SY210amN6dmpXN1o2Q25nRTQ3TU9WS3NBPT0.png)
 ## Screen shots
-- original(Size:30x30, Birth rate: 0.2)
-![](pictures/pic1.gif)
 
-- (Size:20x20, Birth rate: 0.5)
-![](pictures/pic2.gif)
+### mode 1
+![](./pictures/mode1.gif)
 
-- (Size:40x40, Birth rate: 0.2/0.1)
-![](pictures/pic3.gif)
+### mode2
+![](./pictures/mode2.gif)
+
+### mode 3
+![](./pictures/mode3.gif)
