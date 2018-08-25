@@ -12,9 +12,11 @@ If the current cell is **dead**, and the amount of cells `around` it is **exactl
 - I think the following picture defines the word `around` clearly:  
 ![](http://imglf6.nosdn.127.net/img/MkNhcDYwR0VTeC9xRTF4cEl4b3UwVGozeXd1VGZ4cXZma3RoZzJvQ1VZc3JOTVRtQWdweGN3PT0.png)  
 
-- the `Birth Rate` means that at the beginning of the test, all the cells are dead, and there is a certain propability for each cell to rebirth.
+- In theory, the pane should have **infinite width and length**. Consequently, some strange phenomena breaking the rules will occur in the edge of the pane.
 
-- all the cells alive will be colored **gray** or **black**(only for the newly born), otherwise **white**.
+- The `Birth Rate` means that at the beginning of the test, all the cells are dead, and there is a certain propability for each cell to rebirth.
+
+- All the cells alive will be colored **gray** or **black**(only for the newly born), otherwise **white**.
 
 ## Game mode
 ![](http://imglf3.nosdn0.126.net/img/ZHkxOW9FR3pkWXRleXhYOGtsN20xbWhCVWQ3SG5SY210amN6dmpXN1o2Q25nRTQ3TU9WS3NBPT0.png)
@@ -28,3 +30,6 @@ If the current cell is **dead**, and the amount of cells `around` it is **exactl
 
 ### mode 3
 ![](./pictures/mode3.gif)
+
+## What's more
+What if two different cells influence with each other in only one grid pane? I also made a model to display this.  [click here to know more](https://github.com/TYC6/dual-cells-automata)
